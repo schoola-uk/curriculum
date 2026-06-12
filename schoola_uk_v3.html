@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FFFEF7;--bg2:#F5F4EC;--bg3:#EEEEE6;--text:#1a1a1a;--text2:#555;--text3:#888;--border:#E5E4DC;--r:12px;--r2:8px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
+h1,h2,h3,h4,.logo,.nav-link,.btn,.subject-name,.ks-tab,.filter-btn,.action-btn,.video-title,.topic-h1,.badge,.year-badge,.subj-chip,.back-btn,.accordion-head,.resource-title,.footer-logo,.video-series{font-family:'Nunito',sans-serif}
+.page-hidden{display:none!important}
+/* NAV */
+.nav{background:var(--bg);border-bottom:1.5px solid var(--border);position:sticky;top:0;z-index:100;padding:0 1.5rem}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:60px}
+.logo{font-weight:900;font-size:1.5rem;text-decoration:none;letter-spacing:-0.5px;display:flex;gap:1px}
+.logo span:nth-child(1){color:#E8604C}.logo span:nth-child(2){color:#f59e0b}.logo span:nth-child(3){color:#22c55e}.logo span:nth-child(4){color:#06b6d4}.logo span:nth-child(5){color:#3b82f6}.logo span:nth-child(6){color:#a855f7}.logo span:nth-child(7){color:#ec4899}
+.nav-links{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav-link{padding:5px 12px;border-radius:20px;text-decoration:none;color:var(--text2);font-size:0.85rem;font-weight:700;transition:all .15s;white-space:nowrap;cursor:pointer;border:none;background:none}
+.nav-link:hover,.nav-link.active{background:var(--bg2);color:var(--text)}
+.ks-pill{padding:5px 14px;border-radius:20px;font-size:0.82rem;font-weight:800;text-decoration:none;transition:all .15s;cursor:pointer;border:none}
+.ks1-pill{background:#FFF0EE;color:#b83922}.ks1-pill:hover{background:#ffe4e0}
+.ks2-pill{background:#EEF2FF;color:#1e3a8a}.ks2-pill:hover{background:#e0e7ff}
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f2744 0%,#1a3a6a 60%,#1e3a5f 100%);padding:3rem 1.5rem;border-bottom:4px solid var(--border)}
+.hero-inner{max-width:1200px;margin:0 auto}
+.hero-stripe{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:2rem;max-width:400px}
+.hero-stripe div{flex:1}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);color:#fff;border-radius:20px;padding:5px 14px;font-size:0.78rem;font-weight:700;margin-bottom:1rem}
+.hero h1{font-size:2.2rem;font-weight:900;color:#fff;line-height:1.15;margin-bottom:0.6rem}
+.hero h1 em{font-style:normal;color:#f59e0b}
+.hero-sub{font-size:1rem;color:#94b8e0;margin-bottom:1.75rem;max-width:520px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:var(--r2);font-size:0.88rem;font-weight:800;border:2px solid transparent;cursor:pointer;transition:all .15s;text-decoration:none}
+.btn-ks1{background:#FFF0EE;color:#b83922;border-color:#fecdc8}.btn-ks1:hover{background:#ffe4e0;transform:translateY(-1px)}
+.btn-ks2{background:#EEF2FF;color:#1e3a8a;border-color:#c7d2fe}.btn-ks2:hover{background:#e0e7ff;transform:translateY(-1px)}
+.btn-primary{background:#2563EB;color:#fff;border-color:#2563EB}.btn-primary:hover{background:#1d4ed8;transform:translateY(-1px)}
+.btn-ai{background:linear-gradient(135deg,#7C3AED,#2563EB);color:#fff;border-color:transparent}.btn-ai:hover{opacity:.92;transform:translateY(-1px)}
+/* EVENTS */
+.events-section{padding:1.25rem 1.5rem;border-bottom:1.5px solid var(--border)}
+.events-inner{max-width:1200px;margin:0 auto}
+.section-hdr{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem}
+.section-title{font-size:1rem;font-weight:800;color:var(--text)}
+.see-all{margin-left:auto;font-size:.8rem;color:#2563EB;text-decoration:none;font-weight:700;font-family:'Nunito',sans-serif}
+.events-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.events-strip::-webkit-scrollbar{display:none}
+.ev-card{flex:0 0 130px;border-radius:var(--r);padding:.85rem .8rem;color:#fff;cursor:pointer;transition:transform .15s;min-height:110px;display:flex;flex-direction:column;justify-content:space-between}
+.ev-card:hover{transform:translateY(-2px)}
+.ev-card.today{background:var(--bg2);color:var(--text);border:1.5px solid var(--border)}
+.ev-card.today .en{font-size:2.2rem;font-weight:900;font-family:'Nunito',sans-serif;line-height:1}
+.ev-card.today .em{font-size:.82rem;color:var(--text3);font-weight:700}
+.en{font-size:1.5rem;font-weight:900;font-family:'Nunito',sans-serif}
+.el{font-size:.75rem;font-weight:700;font-family:'Nunito',sans-serif;opacity:.92;line-height:1.3}
+.ed{font-size:.7rem;opacity:.8;font-family:'Nunito',sans-serif;margin-bottom:3px}
+/* SUBJECTS */
+.subjects-section{padding:2rem 1.5rem;border-bottom:1.5px solid var(--border)}
+.subjects-inner{max-width:1200px;margin:0 auto}
+.section-sub{font-size:.82rem;color:var(--text3);margin-bottom:.85rem}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.subject-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;cursor:pointer;transition:all .15s;text-decoration:none;color:var(--text)}
+.subject-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.1);transform:translateY(-2px)}
+.subject-icon{width:46px;height:46px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.4rem}
+.subject-name{font-size:.88rem;font-weight:800;color:var(--text);line-height:1.2}
+.subject-new{display:inline-block;font-size:.68rem;font-weight:700;color:#059669;background:#dcfce7;border-radius:10px;padding:2px 7px;margin-top:2px}
+/* VIDEOS */
+.videos-section{padding:2rem 1.5rem;border-bottom:1.5px solid var(--border)}
+.videos-inner{max-width:1200px;margin:0 auto}
+.videos-strip{display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.videos-strip::-webkit-scrollbar{display:none}
+.video-card{flex:0 0 260px;border-radius:var(--r);overflow:hidden;background:#fff;border:1.5px solid var(--border);cursor:pointer;transition:all .15s;text-decoration:none;color:var(--text)}
+.video-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.1);transform:translateY(-2px)}
+.video-thumb{height:148px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.vplay{width:44px;height:44px;background:rgba(255,255,255,.93);border-radius:50%;display:flex;align-items:center;justify-content:center;position:absolute;z-index:2}
+.vtri{width:0;height:0;border-left:14px solid #333;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:3px}
+.vbadge{position:absolute;bottom:7px;left:7px;background:rgba(0,0,0,.72);color:#fff;border-radius:20px;padding:2px 9px;font-size:.72rem;font-weight:700;font-family:'Nunito',sans-serif}
+.vks{position:absolute;bottom:7px;right:7px;background:rgba(255,255,255,.88);color:#333;border-radius:20px;padding:2px 9px;font-size:.72rem;font-weight:700;font-family:'Nunito',sans-serif}
+.video-info{padding:.7rem .9rem .9rem}
+.video-series{font-size:.68rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.video-title{font-size:.88rem;font-weight:800;color:var(--text);margin-top:2px}
+.video-src{font-size:.75rem;color:#2563EB;margin-top:4px;font-weight:600}
+/* CURRICULUM */
+.curriculum-section{padding:2rem 1.5rem}
+.curriculum-inner{max-width:1200px;margin:0 auto}
+.ks-tabs{display:flex;gap:8px;margin-bottom:1.25rem}
+.ks-tab{padding:9px 22px;border-radius:var(--r2);font-size:.88rem;font-weight:800;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.ks-tab.ks1{background:#FFF0EE;color:#b83922;border-color:#fecdc8}.ks-tab.ks1.active{background:#ffe4e0;border-color:#f87171}
+.ks-tab.ks2{background:#EEF2FF;color:#1e3a8a;border-color:#c7d2fe}.ks-tab.ks2.active{background:#e0e7ff;border-color:#818cf8}
+.filter-bar{display:flex;gap:7px;margin-bottom:.9rem;flex-wrap:wrap;align-items:center}
+.filter-btn{padding:4px 13px;border-radius:20px;font-size:.78rem;font-weight:700;border:1.5px solid var(--border);background:#fff;cursor:pointer;transition:all .12s;color:var(--text2)}
+.filter-btn:hover,.filter-btn.active{background:var(--bg2);border-color:#aaa;color:var(--text)}
+.search-input{padding:6px 14px;border:1.5px solid var(--border);border-radius:20px;font-size:.82rem;font-family:'Inter',sans-serif;background:#fff;outline:none;flex:1;min-width:150px;max-width:260px}
+.search-input:focus{border-color:#2563EB}
+.table-wrap{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);overflow:auto;max-height:580px}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+thead th{padding:9px 11px;text-align:left;font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;background:var(--bg2);border-bottom:2px solid var(--border);white-space:nowrap;color:var(--text);position:sticky;top:0;z-index:5}
+tbody tr{border-bottom:1px solid var(--border)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:nth-child(even){background:var(--bg2)}
+tbody tr:nth-child(odd){background:#fff}
+tbody tr:hover{background:#f0f9ff}
+td{padding:8px 11px;vertical-align:middle}
+.subj-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.75rem;font-weight:800;white-space:nowrap}
+.year-badge{background:var(--bg3);color:var(--text2);border-radius:6px;padding:2px 7px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.topic-link{color:#2563EB;text-decoration:none;font-weight:600;font-size:.84rem}
+.topic-link:hover{text-decoration:underline}
+.action-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:6px;font-size:.75rem;font-weight:700;text-decoration:none;border:1.5px solid;cursor:pointer;background:transparent;transition:all .12s;white-space:nowrap}
+.action-btn.watch{color:#7C3AED;border-color:#c4b5fd;background:#f5f3ff}.action-btn.watch:hover{background:#ede9fe}
+.action-btn.print{color:#059669;border-color:#6ee7b7;background:#f0fdf4}.action-btn.print:hover{background:#dcfce7}
+.action-btn.quiz{color:#D97706;border-color:#fcd34d;background:#fffbeb}.action-btn.quiz:hover{background:#fef3c7}
+.actions-cell{display:flex;gap:4px;flex-wrap:wrap}
+/* TOPIC PAGE */
+.topic-page{padding:2rem 1.5rem;max-width:1200px;margin:0 auto}
+.breadcrumb{display:flex;align-items:center;gap:5px;font-size:.8rem;color:var(--text3);margin-bottom:1.2rem;flex-wrap:wrap}
+.breadcrumb a{color:#2563EB;text-decoration:none;font-weight:600}
+.breadcrumb a:hover{text-decoration:underline}
+.topic-badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.7rem}
+.badge{padding:3px 11px;border-radius:20px;font-size:.76rem;font-weight:800}
+.topic-h1{font-size:1.8rem;font-weight:900;color:var(--text);margin-bottom:.4rem}
+.topic-source{font-size:.78rem;color:var(--text3);margin-top:3px}
+.topic-source a{color:#2563EB;text-decoration:none}
+.info-box{background:#fff;border:1.5px solid var(--border);border-radius:var(--r);padding:1.1rem 1.3rem;margin-bottom:1.25rem}
+.info-box h3{font-size:.92rem;font-weight:800;margin-bottom:.7rem;color:var(--text)}
+.info-box p{font-size:.88rem;color:var(--text2);line-height:1.7}
+.obj-list{list-style:none;padding:0}
+.obj-list li{padding:5px 0 5px 1.4rem;position:relative;font-size:.86rem;color:var(--text2);border-bottom:1px solid var(--border)}
+.obj-list li:last-child{border-bottom:none}
+.obj-list li::before{content:'✓';position:absolute;left:0;color:#059669;font-weight:700}
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:.7rem}
+.resource-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--r2);padding:.9rem}
+.resource-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.resource-type{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);margin-bottom:3px}
+.resource-title{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.resource-desc{font-size:.78rem;color:var(--text2);margin-bottom:7px;line-height:1.5}
+.quiz-cta{background:linear-gradient(135deg,#2563EB,#7C3AED);color:#fff;border:none;border-radius:var(--r2);padding:13px 26px;font-size:.95rem;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;text-align:center;transition:all .15s;margin:.7rem 0;display:block;text-decoration:none}
+.quiz-cta:hover{opacity:.92;transform:translateY(-1px)}
+.accordion-item{border:1.5px solid var(--border);border-radius:var(--r2);margin-bottom:7px;overflow:hidden}
+.accordion-head{padding:.8rem 1rem;font-weight:700;font-size:.87rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--bg2)}
+.accordion-body{padding:.8rem 1rem;font-size:.85rem;color:var(--text2);display:none;line-height:1.65}
+.accordion-body.open{display:block}
+.nav-btns{display:flex;gap:10px;margin-top:1.75rem;flex-wrap:wrap}
+.nav-btn{padding:9px 18px;border-radius:var(--r2);font-size:.85rem;font-weight:800;font-family:'Nunito',sans-serif;border:1.5px solid var(--border);background:#fff;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;color:var(--text2)}
+.nav-btn:hover{background:var(--bg2);border-color:#aaa}
+.back-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:var(--r2);font-size:.85rem;font-weight:700;background:#fff;border:1.5px solid var(--border);cursor:pointer;color:var(--text2);transition:all .15s;margin-bottom:1.25rem}
+.back-btn:hover{background:var(--bg2)}
+/* AI CHAT */
+.ai-section{background:linear-gradient(135deg,#f5f3ff,#eff6ff);border:1.5px solid #c4b5fd;border-radius:var(--r);padding:1.1rem 1.3rem;margin-bottom:1.25rem}
+.ai-section h3{font-size:.92rem;font-weight:800;margin-bottom:.6rem;color:#4c1d95;display:flex;align-items:center;gap:6px}
+.ai-badge{background:#7C3AED;color:#fff;border-radius:20px;padding:2px 9px;font-size:.7rem;font-weight:800;font-family:'Nunito',sans-serif}
+.ai-input-row{display:flex;gap:8px;margin-top:.75rem}
+.ai-input{flex:1;padding:9px 14px;border:1.5px solid #c4b5fd;border-radius:var(--r2);font-size:.85rem;font-family:'Inter',sans-serif;outline:none;background:#fff}
+.ai-input:focus{border-color:#7C3AED}
+.ai-send{padding:9px 18px;background:#7C3AED;color:#fff;border:none;border-radius:var(--r2);font-size:.85rem;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap}
+.ai-send:hover{background:#6d28d9}
+.ai-send:disabled{background:#a78bfa;cursor:not-allowed}
+.ai-messages{margin-top:.85rem;display:flex;flex-direction:column;gap:.7rem;max-height:320px;overflow-y:auto}
+.ai-msg{padding:.75rem 1rem;border-radius:var(--r2);font-size:.85rem;line-height:1.65}
+.ai-msg.user{background:#7C3AED;color:#fff;align-self:flex-end;max-width:80%}
+.ai-msg.assistant{background:#fff;border:1.5px solid var(--border);color:var(--text);align-self:flex-start;max-width:90%}
+.ai-msg.loading{color:var(--text3);font-style:italic}
+.ai-suggestions{display:flex;gap:6px;flex-wrap:wrap;margin-top:.6rem}
+.ai-sug{padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;font-family:'Nunito',sans-serif;background:#ede9fe;color:#5b21b6;cursor:pointer;border:1.5px solid #c4b5fd;transition:all .12s}
+.ai-sug:hover{background:#ddd6fe}
+/* FOOTER */
+.footer{background:var(--bg2);border-top:1.5px solid var(--border);padding:2.5rem 1.5rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.75rem}
+.footer-logo{font-weight:900;font-size:1.3rem;margin-bottom:.4rem;display:flex;gap:1px}
+.footer-logo span:nth-child(1){color:#E8604C}.footer-logo span:nth-child(2){color:#f59e0b}.footer-logo span:nth-child(3){color:#22c55e}.footer-logo span:nth-child(4){color:#06b6d4}.footer-logo span:nth-child(5){color:#3b82f6}.footer-logo span:nth-child(6){color:#a855f7}.footer-logo span:nth-child(7){color:#ec4899}
+.footer-desc{font-size:.8rem;color:var(--text3);line-height:1.6;max-width:250px}
+.footer-col h4{font-size:.82rem;font-weight:800;margin-bottom:.7rem;color:var(--text)}
+.footer-col a{display:block;font-size:.8rem;color:var(--text3);text-decoration:none;margin-bottom:5px;transition:color .12s}
+.footer-col a:hover{color:#2563EB}
+.footer-disclaimer{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r2);padding:1.1rem;font-size:.75rem;color:var(--text3);line-height:1.7}
+.footer-disclaimer strong{color:var(--text2)}
+.footer-disclaimer a{color:#2563EB;text-decoration:none}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:1.1rem;margin-top:1.1rem;border-top:1px solid var(--border);font-size:.77rem;color:var(--text3);flex-wrap:wrap;gap:.5rem}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:1.5rem}.hero h1{font-size:1.6rem}.subjects-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="showPage('home');return false"><span>S</span><span>c</span><span>h</span><span>o</span><span>o</span><span>l</span><span>a</span></a>
+    <div style="font-size:.72rem;color:var(--text3);font-family:'Nunito',sans-serif;font-weight:600">
+      <svg width="16" height="11" viewBox="0 0 60 40" style="vertical-align:middle;margin-right:3px"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8" fill="none"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5" fill="none"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13" fill="none"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8" fill="none"/></svg>
+      UK curriculum companion
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="showPage('home')">Home</button>
+      <button class="ks-pill ks1-pill" onclick="showPage('home');switchKS('ks1');scrollTo('.curriculum-section')">KS1</button>
+      <button class="ks-pill ks2-pill" onclick="showPage('home');switchKS('ks2');scrollTo('.curriculum-section')">KS2</button>
+      <button class="nav-link" onclick="showPage('about')">About</button>
+    </div>
+  </div>
+</nav>
+
+<div id="page-home">
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-stripe"><div style="background:#E8604C"></div><div style="background:#f59e0b"></div><div style="background:#22c55e"></div><div style="background:#3b82f6"></div><div style="background:#a855f7"></div></div>
+    <div class="hero-tag">Free · No account needed · UK National Curriculum</div>
+    <h1>Explore the full<br><em>UK National Curriculum</em></h1>
+    <p class="hero-sub">KS1 &amp; KS2 — every subject, every topic, in order. Real links to BBC Teach, Oak National Academy, Bitesize &amp; Twinkl.</p>
+    <div class="hero-btns">
+      <button class="btn btn-ks1" onclick="switchKS('ks1');scrollTo('.curriculum-section')">📗 Key Stage 1 · Years 1–2</button>
+      <button class="btn btn-ks2" onclick="switchKS('ks2');scrollTo('.curriculum-section')">📘 Key Stage 2 · Years 3–6</button>
+      <button class="btn btn-ai" onclick="scrollTo('.ai-global-section')">✦ Ask AI tutor</button>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events-section">
+  <div class="events-inner">
+    <div class="section-hdr"><span class="section-title">📅 Upcoming events &amp; awareness days</span></div>
+    <div class="events-strip">
+      <div class="ev-card today"><div class="en">12</div><div class="em">June 2026</div></div>
+      <div class="ev-card" style="background:linear-gradient(135deg,#9333ea,#ec4899)"><div class="ed">1–30 Jun</div><div class="en" style="font-size:1.3rem">Pride</div><div class="el">Pride Month</div></div>
+      <div class="ev-card" style="background:linear-gradient(135deg,#059669,#065f46)"><div class="ed">11 Jun–19 Jul</div><div class="en" style="font-size:1.1rem">FIFA</div><div class="el">World Cup 2026</div></div>
+      <div class="ev-card" style="background:linear-gradient(135deg,#0D9488,#0f766e)"><div class="ed">12 Jun–5 Jul</div><div class="en" style="font-size:1rem">T20</div><div class="el">Women's World Cup</div></div>
+      <div class="ev-card" style="background:linear-gradient(135deg,#EA580C,#c2410c)"><div class="ed">15–21 Jun</div><div class="en" style="font-size:1rem">Refugee</div><div class="el">Refugee Week</div></div>
+      <div class="ev-card" style="background:linear-gradient(135deg,#CA8A04,#92400e)"><div class="ed">21 Jun</div><div class="en" style="font-size:1rem">Solstice</div><div class="el">Summer Solstice</div></div>
+      <div class="ev-card" style="background:linear-gradient(135deg,#2563EB,#4338CA)"><div class="ed">28 Jun</div><div class="en" style="font-size:1rem">STEM</div><div class="el">National STEM Day</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section class="subjects-section">
+  <div class="subjects-inner">
+    <div class="section-hdr"><div><div class="section-title">Explore subjects</div><div class="section-sub">Click any subject to filter the curriculum table</div></div></div>
+    <div class="subjects-grid" id="subjects-grid"></div>
+  </div>
+</section>
+
+<!-- FEATURED VIDEOS -->
+<section class="videos-section">
+  <div class="videos-inner">
+    <div class="section-hdr"><span class="section-title">🎬 Featured video lessons</span><a href="https://www.bbc.co.uk/teach" target="_blank" rel="noopener noreferrer" class="see-all">See all on BBC Teach →</a></div>
+    <div class="videos-strip" id="videos-strip"></div>
+  </div>
+</section>
+
+<!-- AI GLOBAL CHAT -->
+<section class="ai-global-section" style="padding:0 1.5rem 2rem">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="ai-section">
+      <h3>✦ AI Curriculum Tutor <span class="ai-badge">Powered by Claude</span></h3>
+      <p style="font-size:.85rem;color:var(--text2);margin-bottom:.5rem">Ask anything about the UK primary curriculum — topics, resources, year groups, teaching tips.</p>
+      <div class="ai-suggestions">
+        <button class="ai-sug" onclick="aiSuggest(this)">What topics are in Year 3 Maths?</button>
+        <button class="ai-sug" onclick="aiSuggest(this)">Find me Science resources for KS2</button>
+        <button class="ai-sug" onclick="aiSuggest(this)">Tips for teaching phonics at home</button>
+        <button class="ai-sug" onclick="aiSuggest(this)">What is the Water Cycle topic about?</button>
+        <button class="ai-sug" onclick="aiSuggest(this)">Best free maths games online</button>
+      </div>
+      <div class="ai-input-row">
+        <input class="ai-input" id="global-ai-input" placeholder="Ask about any curriculum topic, year group, or subject..." onkeydown="if(event.key==='Enter')sendGlobalAI()">
+        <button class="ai-send" id="global-ai-btn" onclick="sendGlobalAI()">Ask →</button>
+      </div>
+      <div class="ai-messages" id="global-ai-messages"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM TABLES -->
+<section class="curriculum-section" style="padding:0 1.5rem 3rem">
+  <div class="curriculum-inner">
+    <div class="section-hdr" style="margin-bottom:1.25rem">
+      <div><div class="section-title">Full National Curriculum</div><div class="section-sub">Real links to BBC Teach, Oak National Academy, Bitesize &amp; Twinkl for every topic</div></div>
+    </div>
+    <div class="ks-tabs">
+      <button class="ks-tab ks1 active" id="tab-ks1" onclick="switchKS('ks1')">📗 Key Stage 1 · Years 1–2 · Ages 5–7</button>
+      <button class="ks-tab ks2" id="tab-ks2" onclick="switchKS('ks2')">📘 Key Stage 2 · Years 3–6 · Ages 7–11</button>
+    </div>
+    <div class="filter-bar" id="filter-bar">
+      <input class="search-input" type="text" placeholder="🔍 Search topics..." id="search-input" oninput="filterTable()">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter(this,'all')">All</button>
+      <button class="filter-btn" data-filter="English" onclick="setFilter(this,'English')">English</button>
+      <button class="filter-btn" data-filter="Maths" onclick="setFilter(this,'Maths')">Maths</button>
+      <button class="filter-btn" data-filter="Science" onclick="setFilter(this,'Science')">Science</button>
+      <button class="filter-btn" data-filter="History" onclick="setFilter(this,'History')">History</button>
+      <button class="filter-btn" data-filter="Geography" onclick="setFilter(this,'Geography')">Geography</button>
+      <button class="filter-btn" data-filter="Computing" onclick="setFilter(this,'Computing')">Computing</button>
+    </div>
+    <div class="table-wrap" id="ks1-wrap"><table><thead><tr><th>Subject</th><th>Year</th><th>Topic</th><th>Video</th><th>Print</th><th>Quiz</th></tr></thead><tbody id="ks1-tbody"></tbody></table></div>
+    <div class="table-wrap page-hidden" id="ks2-wrap"><table><thead><tr><th>Subject</th><th>Year</th><th>Topic</th><th>Video</th><th>Print</th><th>Quiz</th></tr></thead><tbody id="ks2-tbody"></tbody></table></div>
+  </div>
+</section>
+
+</div>
+
+<!-- TOPIC PAGE -->
+<div id="page-topic" class="page-hidden">
+  <div class="topic-page" id="topic-content"></div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="page-about" class="page-hidden">
+  <div style="max-width:800px;margin:3rem auto;padding:0 1.5rem">
+    <h1 style="font-family:Nunito;font-weight:900;font-size:1.8rem;margin-bottom:1rem">About Schoola</h1>
+    <p style="color:var(--text2);margin-bottom:1rem;line-height:1.7">Schoola (schoola.uk) is a free, independent curriculum signposting tool for UK primary school pupils aged 5–11 and their parents. We map the full statutory National Curriculum (KS1 and KS2) and curate links to the best free educational resources.</p>
+    <p style="color:var(--text2);margin-bottom:1rem;line-height:1.7"><strong>Schoola does not create or host its own content.</strong> We link to BBC Teach, Oak National Academy, BBC Bitesize, Twinkl, White Rose Maths, and other trusted UK education providers.</p>
+    <p style="color:var(--text2);margin-bottom:1.5rem;line-height:1.7">The AI Tutor feature is powered by Anthropic's Claude and is designed to help pupils and parents understand curriculum topics — it does not replace professional teaching advice.</p>
+    <button class="btn btn-primary" onclick="showPage('home')">← Back to home</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><span>S</span><span>c</span><span>h</span><span>o</span><span>o</span><span>l</span><span>a</span></div>
+        <p class="footer-desc">Free UK primary curriculum signposting. Every subject, every topic — Years 1–6. Real links to trusted resources.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Key Stage 1</h4>
+        <a href="https://www.bbc.co.uk/bitesize/primary" target="_blank" rel="noopener">BBC Bitesize KS1</a>
+        <a href="https://www.thenational.academy/pupils/years/year-1" target="_blank" rel="noopener">Oak Academy Year 1</a>
+        <a href="https://www.thenational.academy/pupils/years/year-2" target="_blank" rel="noopener">Oak Academy Year 2</a>
+        <a href="https://www.twinkl.co.uk/resources/ks1" target="_blank" rel="noopener">Twinkl KS1</a>
+      </div>
+      <div class="footer-col">
+        <h4>Key Stage 2</h4>
+        <a href="https://www.bbc.co.uk/bitesize/primary" target="_blank" rel="noopener">BBC Bitesize KS2</a>
+        <a href="https://www.thenational.academy/pupils/years/year-3" target="_blank" rel="noopener">Oak Academy Year 3–4</a>
+        <a href="https://www.thenational.academy/pupils/years/year-5" target="_blank" rel="noopener">Oak Academy Year 5–6</a>
+        <a href="https://www.twinkl.co.uk/resources/ks2" target="_blank" rel="noopener">Twinkl KS2</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="https://www.bbc.co.uk/teach" target="_blank" rel="noopener">BBC Teach</a>
+        <a href="https://whiteroseeducation.com" target="_blank" rel="noopener">White Rose Maths</a>
+        <a href="https://www.topmarks.co.uk" target="_blank" rel="noopener">Topmarks</a>
+        <a href="https://mathsframe.co.uk" target="_blank" rel="noopener">Maths Frame</a>
+        <a href="https://www.gov.uk/national-curriculum" target="_blank" rel="noopener">DfE Curriculum</a>
+      </div>
+    </div>
+    <div class="footer-disclaimer">
+      <strong>Disclaimer</strong> — Schoola (schoola.uk) is an independent educational signposting website. It does not create, host, or control any third-party content, videos, worksheets, or quizzes linked from this site. All external links are provided for general guidance only. Schoola accepts no responsibility for the accuracy, completeness, or suitability of any third-party content. Parents and guardians are strongly encouraged to review all linked resources before sharing with children. This website does not constitute official educational advice. For statutory guidance visit <a href="https://www.gov.uk/national-curriculum" target="_blank" rel="noopener">gov.uk/national-curriculum</a>. Schoola is not affiliated with the UK Government, DfE, BBC, Twinkl, Oak National Academy, or White Rose Maths.
+    </div>
+    <div class="footer-bottom">
+      <span>© Schoola. All rights reserved.</span>
+      <span>Not affiliated with DfE, BBC, Twinkl, or Oak National Academy.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const SUBJECTS=[
+  {id:'English',label:'English',color:'#E8604C',bg:'#FFF0EE',emoji:'📚'},
+  {id:'Maths',label:'Maths',color:'#2563EB',bg:'#EEF2FF',emoji:'🔢'},
+  {id:'Science',label:'Science',color:'#059669',bg:'#ECFDF5',emoji:'🔬'},
+  {id:'History',label:'History',color:'#D97706',bg:'#FFFBEB',emoji:'🏛️'},
+  {id:'Geography',label:'Geography',color:'#0D9488',bg:'#F0FDFA',emoji:'🌍'},
+  {id:'Art',label:'Art & Design',color:'#DB2777',bg:'#FDF2F8',emoji:'🎨'},
+  {id:'DT',label:'Design & Tech',color:'#EA580C',bg:'#FFF7ED',emoji:'⚙️'},
+  {id:'Computing',label:'Computing',color:'#7C3AED',bg:'#F5F3FF',emoji:'💻'},
+  {id:'Music',label:'Music',color:'#4338CA',bg:'#EEF2FF',emoji:'🎵'},
+  {id:'PE',label:'Physical Education',color:'#65A30D',bg:'#F7FEE7',emoji:'⚽'},
+  {id:'RE',label:'Religious Education',color:'#E11D48',bg:'#FFF1F2',emoji:'🕊️'},
+  {id:'PSHE',label:'PSHE',color:'#CA8A04',bg:'#FEFCE8',emoji:'❤️'},
+];
+const SM={};SUBJECTS.forEach(s=>SM[s.id]=s);
+function gS(id){return SM[id]||{color:'#888',bg:'#f5f5f5',emoji:'📖',label:id}}
+
+// Real URL mappings per subject
+const WATCH_URLS={
+  English:'https://www.bbc.co.uk/teach/primary/english',
+  Maths:'https://www.bbc.co.uk/teach/primary/maths',
+  Science:'https://www.bbc.co.uk/teach/primary/science',
+  History:'https://www.bbc.co.uk/teach/primary/history',
+  Geography:'https://www.bbc.co.uk/teach/primary/geography',
+  Art:'https://www.bbc.co.uk/teach/primary/art-and-design',
+  DT:'https://www.bbc.co.uk/teach/primary/design-and-technology',
+  Computing:'https://www.bbc.co.uk/teach/primary/computing',
+  Music:'https://www.bbc.co.uk/teach/primary/music',
+  PE:'https://www.bbc.co.uk/teach/primary/physical-education',
+  RE:'https://www.bbc.co.uk/teach/primary/religious-education',
+  PSHE:'https://www.bbc.co.uk/teach/primary/pshe',
+};
+const PRINT_URLS={
+  English:'https://www.twinkl.co.uk/resources/english',
+  Maths:'https://www.twinkl.co.uk/resources/maths',
+  Science:'https://www.twinkl.co.uk/resources/science',
+  History:'https://www.twinkl.co.uk/resources/history',
+  Geography:'https://www.twinkl.co.uk/resources/geography',
+  Art:'https://www.twinkl.co.uk/resources/art-and-design',
+  DT:'https://www.twinkl.co.uk/resources/design-and-technology',
+  Computing:'https://www.twinkl.co.uk/resources/computing',
+  Music:'https://www.twinkl.co.uk/resources/music',
+  PE:'https://www.twinkl.co.uk/resources/physical-education',
+  RE:'https://www.twinkl.co.uk/resources/religious-education',
+  PSHE:'https://www.twinkl.co.uk/resources/pshe',
+};
+const QUIZ_URLS={
+  English:'https://www.bbc.co.uk/bitesize/subjects/zv48q6f',
+  Maths:'https://www.bbc.co.uk/bitesize/subjects/z826n39',
+  Science:'https://www.bbc.co.uk/bitesize/subjects/znyycdm',
+  History:'https://www.bbc.co.uk/bitesize/subjects/zk26n39',
+  Geography:'https://www.bbc.co.uk/bitesize/subjects/zrw76sg',
+  Art:'https://www.bbc.co.uk/bitesize/subjects/zn3rkqt',
+  DT:'https://www.bbc.co.uk/bitesize/subjects/zpdkqhv',
+  Computing:'https://www.bbc.co.uk/bitesize/subjects/zvnrq6f',
+  Music:'https://www.bbc.co.uk/bitesize/subjects/z2tgr82',
+  PE:'https://www.bbc.co.uk/bitesize/subjects/zxg87hv',
+  RE:'https://www.bbc.co.uk/bitesize/subjects/z7hs34j',
+  PSHE:'https://www.bbc.co.uk/bitesize/subjects/zqvv4wx',
+};
+const OAK_URLS={
+  English:{ks1:'https://www.thenational.academy/teachers/programmes/english-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/english-primary-ks2'},
+  Maths:{ks1:'https://www.thenational.academy/teachers/programmes/maths-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/maths-primary-ks2'},
+  Science:{ks1:'https://www.thenational.academy/teachers/programmes/science-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/science-primary-ks2'},
+  History:{ks1:'https://www.thenational.academy/teachers/programmes/history-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/history-primary-ks2'},
+  Geography:{ks1:'https://www.thenational.academy/teachers/programmes/geography-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/geography-primary-ks2'},
+  Art:{ks1:'https://www.thenational.academy/teachers/programmes/art-and-design-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/art-and-design-primary-ks2'},
+  Computing:{ks1:'https://www.thenational.academy/teachers/programmes/computing-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/computing-primary-ks2'},
+  Music:{ks1:'https://www.thenational.academy/teachers/programmes/music-primary-ks1',ks2:'https://www.thenational.academy/teachers/programmes/music-primary-ks2'},
+  default:{ks1:'https://www.thenational.academy',ks2:'https://www.thenational.academy'},
+};
+
+const VIDEOS=[
+  {t:'The Circulatory System',s:'BBC Teach · Science',ks:'KS2',dur:'4m',bg:'linear-gradient(135deg,#1a1060,#3b1d8a)',url:'https://www.bbc.co.uk/teach/class-clips-video/science-ks2-the-circulatory-system/zncxpg8'},
+  {t:'The Respiratory System',s:'BBC Teach · Science',ks:'KS2',dur:'4m',bg:'linear-gradient(135deg,#2d0a4e,#5b21b6)',url:'https://www.bbc.co.uk/teach/class-clips-video/science-ks2-the-respiratory-system/zbnbqp3'},
+  {t:'Fractions: Halves & Quarters',s:'Oak National Academy · Maths',ks:'KS1',dur:'~20m',bg:'linear-gradient(135deg,#1e3a8a,#2563eb)',url:'https://www.thenational.academy/teachers/programmes/maths-primary-ks1/units'},
+  {t:'The Great Fire of London',s:'BBC Teach · History',ks:'KS1',dur:'5m',bg:'linear-gradient(135deg,#7c2d12,#c2410c)',url:'https://www.bbc.co.uk/teach/class-clips-video/history-ks1-the-great-fire-of-london/znhp8xs'},
+  {t:'Forces & Magnets',s:'Oak National Academy · Science',ks:'KS2 Y3',dur:'~20m',bg:'linear-gradient(135deg,#14532d,#15803d)',url:'https://www.thenational.academy/teachers/programmes/science-primary-ks2/units'},
+  {t:'Times Tables: 2, 5 & 10',s:'White Rose Maths',ks:'KS1',dur:'~15m',bg:'linear-gradient(135deg,#0c4a6e,#0369a1)',url:'https://whiteroseeducation.com/resources'},
+];
+
+const KS1=[
+  {s:'English',y:'Year 1',t:'Spoken language: listening and responding'},
+  {s:'English',y:'Year 1',t:'Spoken language: asking and answering questions'},
+  {s:'English',y:'Year 1',t:'Word reading: phonics — Phase 3 and 4'},
+  {s:'English',y:'Year 1',t:'Word reading: phonics — Phase 5'},
+  {s:'English',y:'Year 1',t:'Word reading: common exception words (Year 1)'},
+  {s:'English',y:'Year 1',t:'Comprehension: understanding fiction texts'},
+  {s:'English',y:'Year 1',t:'Comprehension: understanding non-fiction texts'},
+  {s:'English',y:'Year 1',t:'Handwriting: correct letter formation'},
+  {s:'English',y:'Year 1',t:'Writing composition: sentences with capital letters and full stops'},
+  {s:'English',y:'Year 1',t:'Spelling: Year 1 statutory word list'},
+  {s:'English',y:'Year 1',t:'Grammar: word classes — nouns, verbs, adjectives'},
+  {s:'English',y:'Year 2',t:'Word reading: decoding unfamiliar words'},
+  {s:'English',y:'Year 2',t:'Comprehension: inference and prediction'},
+  {s:'English',y:'Year 2',t:'Comprehension: poetry and rhyme'},
+  {s:'English',y:'Year 2',t:'Writing composition: planning and drafting stories'},
+  {s:'English',y:'Year 2',t:'Writing composition: non-chronological reports'},
+  {s:'English',y:'Year 2',t:'Spelling: Year 2 statutory word list'},
+  {s:'English',y:'Year 2',t:'Grammar: coordination and subordination'},
+  {s:'English',y:'Year 2',t:'Grammar: expanded noun phrases'},
+  {s:'English',y:'Year 2',t:'Punctuation: apostrophes for omission and possession'},
+  {s:'Maths',y:'Year 1',t:'Number: counting to and across 100'},
+  {s:'Maths',y:'Year 1',t:'Number: reading and writing numbers to 20'},
+  {s:'Maths',y:'Year 1',t:'Number: place value — tens and ones'},
+  {s:'Maths',y:'Year 1',t:'Addition and subtraction: number bonds to 10 and 20'},
+  {s:'Maths',y:'Year 1',t:'Multiplication and division: counting in 2s, 5s, and 10s'},
+  {s:'Maths',y:'Year 1',t:'Fractions: half and quarter of shapes and quantities'},
+  {s:'Maths',y:'Year 1',t:'Measurement: length and height'},
+  {s:'Maths',y:'Year 1',t:"Measurement: time — o'clock and half past"},
+  {s:'Maths',y:'Year 1',t:'Measurement: money — recognising coins and notes'},
+  {s:'Maths',y:'Year 1',t:'Geometry: 2D and 3D shapes — properties'},
+  {s:'Maths',y:'Year 2',t:'Number: reading and writing numbers to 100'},
+  {s:'Maths',y:'Year 2',t:'Addition and subtraction: solving two-step problems'},
+  {s:'Maths',y:'Year 2',t:'Multiplication: 2, 5, and 10 times tables'},
+  {s:'Maths',y:'Year 2',t:'Fractions: thirds and quarters — equivalence'},
+  {s:'Maths',y:'Year 2',t:'Measurement: time — quarter past and to; minutes'},
+  {s:'Maths',y:'Year 2',t:'Statistics: block diagrams and tally charts'},
+  {s:'Maths',y:'Year 2',t:'Geometry: lines of symmetry'},
+  {s:'Science',y:'Year 1',t:'Biology: everyday materials and their properties'},
+  {s:'Science',y:'Year 1',t:'Biology: plants — identify and name common plants'},
+  {s:'Science',y:'Year 1',t:'Biology: animals — carnivores, herbivores, omnivores'},
+  {s:'Science',y:'Year 1',t:'Physics: seasonal changes — the four seasons'},
+  {s:'Science',y:'Year 2',t:'Biology: living things and their habitats'},
+  {s:'Science',y:'Year 2',t:'Biology: food chains — producers and consumers'},
+  {s:'Science',y:'Year 2',t:'Biology: plants — what plants need to grow'},
+  {s:'Science',y:'Year 2',t:'Biology: animals including humans — basic needs'},
+  {s:'Science',y:'Year 2',t:'Chemistry: uses of everyday materials'},
+  {s:'History',y:'Year 1–2',t:'Changes within living memory'},
+  {s:'History',y:'Year 1–2',t:'Events beyond living memory — Great Fire of London 1666'},
+  {s:'History',y:'Year 1–2',t:'Lives of significant individuals — Florence Nightingale'},
+  {s:'History',y:'Year 1–2',t:'Lives of significant individuals — Neil Armstrong'},
+  {s:'History',y:'Year 1–2',t:'Lives of significant individuals — Rosa Parks'},
+  {s:'Geography',y:'Year 1–2',t:'Locational knowledge: four countries of the UK and capitals'},
+  {s:'Geography',y:'Year 1–2',t:'Locational knowledge: seven continents and five oceans'},
+  {s:'Geography',y:'Year 1–2',t:'Human and physical geography: seasonal weather'},
+  {s:'Geography',y:'Year 1–2',t:'Geographical skills: maps, atlases, globes'},
+  {s:'Art',y:'Year 1–2',t:'Drawing: line, shape, tone, and texture from observation'},
+  {s:'Art',y:'Year 1–2',t:'Painting: mixing primary and secondary colours'},
+  {s:'Art',y:'Year 1–2',t:'Sculpture: using clay and natural materials'},
+  {s:'DT',y:'Year 1–2',t:'Design: generating and communicating ideas'},
+  {s:'DT',y:'Year 1–2',t:'Make: cooking and nutrition — where food comes from'},
+  {s:'DT',y:'Year 1–2',t:'Mechanisms: wheels and axles — making a moving vehicle'},
+  {s:'Computing',y:'Year 1–2',t:'Algorithms: step-by-step instructions'},
+  {s:'Computing',y:'Year 1–2',t:'Programming: using floor robots (Bee-Bot) and Scratch Jr'},
+  {s:'Computing',y:'Year 1–2',t:'Digital literacy: using technology safely and respectfully'},
+  {s:'Music',y:'Year 1–2',t:'Performing: singing in tune with expression'},
+  {s:'Music',y:'Year 1–2',t:'Music theory: pulse, rhythm, pitch, dynamics, tempo'},
+  {s:'PE',y:'Year 1–2',t:'Games: throwing, catching, kicking, and striking skills'},
+  {s:'PE',y:'Year 1–2',t:'Gymnastics: travelling, rolling, jumping, balancing'},
+  {s:'PE',y:'Year 1–2',t:'Dance: performing dances using simple movement patterns'},
+  {s:'RE',y:'Year 1–2',t:'Christianity: the Christmas and Easter story'},
+  {s:'RE',y:'Year 1–2',t:'Islam: key beliefs and the Five Pillars'},
+  {s:'RE',y:'Year 1–2',t:'Judaism: the Shabbat and Hanukkah'},
+  {s:'RE',y:'Year 1–2',t:'Hinduism: Diwali and key deities'},
+  {s:'PSHE',y:'Year 1–2',t:'Health and wellbeing: keeping clean and dental hygiene'},
+  {s:'PSHE',y:'Year 1–2',t:'Relationships: family types and making friends'},
+  {s:'PSHE',y:'Year 1–2',t:'Safety: road safety, stranger awareness, online safety'},
+];
+
+const KS2=[
+  {s:'English',y:'Year 3–4',t:'Word reading: morphology and etymology'},
+  {s:'English',y:'Year 3–4',t:'Comprehension: drawing inferences; identifying themes'},
+  {s:'English',y:'Year 3–4',t:'Writing composition: organising paragraphs around a theme'},
+  {s:'English',y:'Year 3–4',t:'Writing composition: narrative — settings, characters, plot'},
+  {s:'English',y:'Year 3–4',t:'Grammar: adverbs, prepositions, conjunctions'},
+  {s:'English',y:'Year 3–4',t:'Grammar: inverted commas (speech marks)'},
+  {s:'English',y:'Year 3–4',t:'Grammar: fronted adverbials with comma'},
+  {s:'English',y:'Year 5–6',t:'Comprehension: predicting from details; summarising'},
+  {s:'English',y:'Year 5–6',t:'Writing composition: formal and informal registers'},
+  {s:'English',y:'Year 5–6',t:'Grammar: subjunctive mood and passive voice'},
+  {s:'English',y:'Year 5–6',t:'Grammar: colons, semi-colons, and dashes'},
+  {s:'Maths',y:'Year 3',t:'Number: place value to 1,000'},
+  {s:'Maths',y:'Year 3',t:'Addition and subtraction: column methods'},
+  {s:'Maths',y:'Year 3',t:'Multiplication: 3, 4, and 8 times tables'},
+  {s:'Maths',y:'Year 3',t:'Fractions: tenths; comparing and ordering fractions'},
+  {s:'Maths',y:'Year 3',t:'Measurement: telling time to the nearest minute; 24-hour clock'},
+  {s:'Maths',y:'Year 3',t:'Statistics: bar charts, pictograms, tables'},
+  {s:'Maths',y:'Year 4',t:'Number: place value to 10,000; negative numbers'},
+  {s:'Maths',y:'Year 4',t:'Multiplication: all tables to 12×12 (MTC statutory)'},
+  {s:'Maths',y:'Year 4',t:'Fractions: equivalent fractions; add and subtract'},
+  {s:'Maths',y:'Year 4',t:'Decimals: tenths and hundredths'},
+  {s:'Maths',y:'Year 5',t:'Number: place value to 1,000,000'},
+  {s:'Maths',y:'Year 5',t:'Multiplication and division: long multiplication'},
+  {s:'Maths',y:'Year 5',t:'Fractions, decimals, percentages: equivalence and conversion'},
+  {s:'Maths',y:'Year 5',t:'Geometry: angles — measuring with a protractor'},
+  {s:'Maths',y:'Year 6',t:'Number: place value to 10,000,000; BODMAS'},
+  {s:'Maths',y:'Year 6',t:'Algebra: using simple formulae; finding unknowns'},
+  {s:'Maths',y:'Year 6',t:'Ratio and proportion: scale drawings'},
+  {s:'Maths',y:'Year 6',t:'Statistics: pie charts; mean, median, mode, range'},
+  {s:'Maths',y:'Year 6',t:'SATs revision: arithmetic and reasoning strategies'},
+  {s:'Science',y:'Year 3',t:'Biology: plants — functions of parts; requirements for growth'},
+  {s:'Science',y:'Year 3',t:'Biology: animals — nutrition; skeleton and muscles'},
+  {s:'Science',y:'Year 3',t:'Chemistry: rocks — types, properties, formation; fossils'},
+  {s:'Science',y:'Year 3',t:'Physics: light — sources, reflection, shadows'},
+  {s:'Science',y:'Year 3',t:'Physics: forces and magnets'},
+  {s:'Science',y:'Year 4',t:'Biology: living things — classification; vertebrates'},
+  {s:'Science',y:'Year 4',t:'Biology: digestive system; teeth and food'},
+  {s:'Science',y:'Year 4',t:'Chemistry: states of matter; the water cycle'},
+  {s:'Science',y:'Year 4',t:'Physics: sound — vibration, pitch, volume'},
+  {s:'Science',y:'Year 4',t:'Physics: electricity — simple circuits; conductors'},
+  {s:'Science',y:'Year 5',t:'Biology: life cycles of plants, animals, humans'},
+  {s:'Science',y:'Year 5',t:'Physics: Earth and space — Solar System; the Moon'},
+  {s:'Science',y:'Year 5',t:'Physics: forces — gravity, air resistance, levers, gears'},
+  {s:'Science',y:'Year 6',t:'Biology: the circulatory system — heart, blood, vessels'},
+  {s:'Science',y:'Year 6',t:'Biology: evolution and inheritance — Darwin and Wallace'},
+  {s:'Science',y:'Year 6',t:'Physics: light — refraction; the eye'},
+  {s:'Science',y:'Year 6',t:'Physics: electricity — voltage; comparing circuits'},
+  {s:'History',y:'Year 3–4',t:'Changes in Britain: Stone Age to Iron Age'},
+  {s:'History',y:'Year 3–4',t:'The Roman Empire and its impact on Britain'},
+  {s:'History',y:'Year 3–4',t:'Anglo-Saxons, Vikings, and the Kingdom of England'},
+  {s:'History',y:'Year 3–4',t:'Ancient Egypt — achievements of early civilisations'},
+  {s:'History',y:'Year 3–4',t:'Ancient Greece — democracy, philosophy, the Olympics'},
+  {s:'History',y:'Year 5–6',t:'The Tudor period (Henry VIII, Elizabeth I, the Reformation)'},
+  {s:'History',y:'Year 5–6',t:'The Victorian era (Industrial Revolution, Empire)'},
+  {s:'History',y:'Year 5–6',t:'World War II — the Blitz, evacuation, the Home Front'},
+  {s:'Geography',y:'Year 3–4',t:'Locational knowledge: counties and cities of the UK'},
+  {s:'Geography',y:'Year 3–4',t:'Physical geography: rivers — the water cycle'},
+  {s:'Geography',y:'Year 3–4',t:'Physical geography: mountains — key UK ranges'},
+  {s:'Geography',y:'Year 3–4',t:'Geographical skills: four-figure grid references; OS maps'},
+  {s:'Geography',y:'Year 5–6',t:'Locational knowledge: North and South America'},
+  {s:'Geography',y:'Year 5–6',t:'Human geography: settlement; migration; economic development'},
+  {s:'Geography',y:'Year 5–6',t:'Physical geography: volcanoes and earthquakes'},
+  {s:'Geography',y:'Year 5–6',t:'Physical geography: biomes and vegetation belts'},
+  {s:'Art',y:'Year 3–4',t:'Drawing: perspective, tonal shading, portraiture'},
+  {s:'Art',y:'Year 3–4',t:'Painting: watercolour techniques; mixing tints and shades'},
+  {s:'Art',y:'Year 5–6',t:'Digital art: photo editing; digital illustration tools'},
+  {s:'Art',y:'Year 5–6',t:'Design history: Art Deco; Bauhaus; contemporary graphic design'},
+  {s:'DT',y:'Year 3–4',t:'Structures: bridges — load-bearing and cross-bracing'},
+  {s:'DT',y:'Year 3–4',t:'Mechanisms: levers and linkages; sliders and pivots'},
+  {s:'DT',y:'Year 5–6',t:'Mechanical systems: cams, cranks, and gears'},
+  {s:'DT',y:'Year 5–6',t:'Electrical systems: programmable components (micro:bit)'},
+  {s:'Computing',y:'Year 3–4',t:'Programming: Scratch — sequence, selection, loops'},
+  {s:'Computing',y:'Year 3–4',t:'Networks: how the internet works — IP addresses, servers'},
+  {s:'Computing',y:'Year 3–4',t:'Data: collecting, organising, and presenting data'},
+  {s:'Computing',y:'Year 5–6',t:'Programming: Python — variables, inputs, outputs'},
+  {s:'Computing',y:'Year 5–6',t:'Networks: how websites work — HTML basics'},
+  {s:'Computing',y:'Year 5–6',t:'Digital literacy: digital footprints; responsible use of AI'},
+  {s:'Music',y:'Year 3–4',t:'Performing: playing a tuned instrument (recorder, ukulele)'},
+  {s:'Music',y:'Year 3–4',t:'Listening: Western Classical — Vivaldi, Mozart, Beethoven'},
+  {s:'Music',y:'Year 5–6',t:'Performing: ensemble performance; accuracy and expression'},
+  {s:'Music',y:'Year 5–6',t:'Music theory: key signatures; chords; melody and harmony'},
+  {s:'PE',y:'Year 3–4',t:'Games: invasion games (football, netball) — tactics and rules'},
+  {s:'PE',y:'Year 3–4',t:'Games: striking and fielding (cricket, rounders)'},
+  {s:'PE',y:'Year 3–4',t:'Athletics: sprinting technique; long jump; relay'},
+  {s:'PE',y:'Year 5–6',t:'Games: competitive invasion games — positional play'},
+  {s:'PE',y:'Year 5–6',t:'Swimming: front crawl; backstroke; water safety; self-rescue'},
+  {s:'RE',y:'Year 3–4',t:"Christianity: the Bible; the life of Jesus; Christian worship"},
+  {s:'RE',y:'Year 3–4',t:"Islam: the Qur'an; prayer and mosque; Hajj"},
+  {s:'RE',y:'Year 3–4',t:'Judaism: the Torah; Passover; Rosh Hashanah'},
+  {s:'RE',y:'Year 3–4',t:'Hinduism: the Trimurti; the Mahabharata; puja'},
+  {s:'RE',y:'Year 5–6',t:'Buddhism: the Eightfold Path; Buddhist ethics; meditation'},
+  {s:'RE',y:'Year 5–6',t:'Philosophy of religion: suffering, the soul, does God exist?'},
+  {s:'PSHE',y:'Year 3–4',t:'Health and wellbeing: healthy lifestyle — diet, exercise, sleep'},
+  {s:'PSHE',y:'Year 3–4',t:'Relationships: respecting differences; bullying'},
+  {s:'PSHE',y:'Year 5–6',t:'Health and wellbeing: mental health; managing stress'},
+  {s:'PSHE',y:'Year 5–6',t:'Relationships: healthy and unhealthy relationships; consent'},
+  {s:'PSHE',y:'Year 5–6',t:'Living in the wider world: democracy; human rights; global issues'},
+];
+
+const TIPS={
+  English:['Read together every day — even 10 minutes makes a huge difference.','Ask your child to retell the story in their own words.','Play word games in the car — rhyming, spotting adjectives, silly sentences.','Leave little notes for your child to find and reply to.'],
+  Maths:['Use real objects — count grapes, add stair steps, share biscuits equally.','Sing times tables to a familiar tune on the school run.','Play board games that involve counting, money, or strategy.','Let them explain their working out — it deepens understanding.'],
+  Science:['Go for a nature walk and ask "what do you notice?" questions.','Simple kitchen experiments (vinegar and bicarb) make great science.','Look up at the night sky and talk about what you can see.','Encourage questions — "I wonder why…" is the start of science.'],
+  History:['Ask "what was it like to live then?" to build empathy.','Visit a local museum or castle — even virtually online.','Compare old photographs with how places look today.','Look up your own family history — that\'s history too!'],
+  Geography:['Use Google Maps to zoom from your street to the whole world.','Talk about the weather every morning: what season? what\'s typical?','Cook a meal from a different country and find it on a map.','Let your child plan the route on a walk using a simple map.'],
+  default:['Little and often beats long occasional sessions.','Ask your child to teach you — it\'s the best test of understanding.','Praise effort and curiosity, not just right answers.','Link learning to real life whenever you can.'],
+};
+
+let currentKS='ks1',currentFilter='all';
+
+function buildSubjects(){
+  const g=document.getElementById('subjects-grid');
+  const extras={Science:'2 new topics',Geography:'3 new topics'};
+  g.innerHTML=SUBJECTS.map(s=>`<a href="#" class="subject-card" onclick="scrollToSubject('${s.id}');return false" style="border-color:${s.color}22"><div class="subject-icon" style="background:${s.bg}">${s.emoji}</div><div><div class="subject-name">${s.label}</div>${extras[s.id]?`<span class="subject-new">✦ ${extras[s.id]}</span>`:''}</div></a>`).join('');
+}
+
+function buildVideos(){
+  const s=document.getElementById('videos-strip');
+  s.innerHTML=VIDEOS.map(v=>`<a class="video-card" href="${v.url}" target="_blank" rel="noopener noreferrer"><div class="video-thumb" style="background:${v.bg}"><div style="color:rgba(255,255,255,0.9);font-size:2.5rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-60%)">▶</div><div class="vbadge">${v.dur}</div><div class="vks">${v.ks}</div></div><div class="video-info"><div class="video-series">${v.s}</div><div class="video-title">${v.t}</div><div class="video-src">Watch now →</div></div></a>`).join('');
+}
+
+function buildRows(rows,tbodyId,ks){
+  const tb=document.getElementById(tbodyId);
+  tb.innerHTML=rows.map(row=>{
+    const s=gS(row.s);
+    const watchUrl=WATCH_URLS[row.s]||'https://www.bbc.co.uk/teach';
+    const printUrl=PRINT_URLS[row.s]||'https://www.twinkl.co.uk';
+    const quizUrl=QUIZ_URLS[row.s]||'https://www.bbc.co.uk/bitesize';
+    return `<tr style="border-left:4px solid ${s.color}" data-subject="${row.s}" data-topic="${row.t.toLowerCase()}">
+      <td><span class="subj-chip" style="background:${s.bg};color:${s.color}">${s.emoji} ${s.label}</span></td>
+      <td><span class="year-badge">${row.y}</span></td>
+      <td><a href="#" class="topic-link" onclick="showTopic('${ks}','${row.s}','${row.y}','${row.t.replace(/'/g,"\\'").replace(/"/g,'&quot;')}');return false">${row.t}</a></td>
+      <td><a class="action-btn watch" href="${watchUrl}" target="_blank" rel="noopener noreferrer">▶ Watch</a></td>
+      <td><a class="action-btn print" href="${printUrl}" target="_blank" rel="noopener noreferrer">🖨 Print</a></td>
+      <td><a class="action-btn quiz" href="${quizUrl}" target="_blank" rel="noopener noreferrer">? Quiz</a></td>
+    </tr>`;
+  }).join('');
+}
+
+function switchKS(ks){
+  currentKS=ks;
+  document.getElementById('ks1-wrap').classList.toggle('page-hidden',ks!=='ks1');
+  document.getElementById('ks2-wrap').classList.toggle('page-hidden',ks!=='ks2');
+  document.getElementById('tab-ks1').classList.toggle('active',ks==='ks1');
+  document.getElementById('tab-ks2').classList.toggle('active',ks==='ks2');
+  filterTable();
+}
+
+function setFilter(btn,filter){
+  currentFilter=filter;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  filterTable();
+}
+
+function filterTable(){
+  const q=(document.getElementById('search-input').value||'').toLowerCase();
+  const id=currentKS==='ks1'?'ks1-tbody':'ks2-tbody';
+  document.querySelectorAll('#'+id+' tr').forEach(row=>{
+    const sm=currentFilter==='all'||row.dataset.subject===currentFilter;
+    const qm=!q||row.dataset.topic.includes(q);
+    row.style.display=(sm&&qm)?'':'none';
+  });
+}
+
+function scrollTo(sel){
+  setTimeout(()=>{const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},60);
+}
+
+function scrollToSubject(id){
+  currentFilter=id;
+  document.querySelectorAll('.filter-btn').forEach(b=>{b.classList.remove('active');if(b.dataset&&b.dataset.filter===id)b.classList.add('active');});
+  filterTable();
+  scrollTo('.curriculum-section');
+}
+
+function showPage(name){
+  ['home','topic','about'].forEach(p=>document.getElementById('page-'+p).classList.toggle('page-hidden',p!==name));
+  document.querySelectorAll('.nav-link').forEach(l=>{l.classList.remove('active');if(l.textContent.trim().toLowerCase()===name||(name==='home'&&l.textContent.trim()==='Home'))l.classList.add('active');});
+  if(name!=='topic')window.scrollTo(0,0);
+}
+
+// AI functionality
+let globalMsgs=[];
+
+function aiSuggest(btn){
+  document.getElementById('global-ai-input').value=btn.textContent;
+  sendGlobalAI();
+}
+
+async function sendGlobalAI(){
+  const input=document.getElementById('global-ai-input');
+  const q=input.value.trim();
+  if(!q)return;
+  const btn=document.getElementById('global-ai-btn');
+  const msgDiv=document.getElementById('global-ai-messages');
+  input.value='';
+  btn.disabled=true;
+  globalMsgs.push({role:'user',content:q});
+  msgDiv.innerHTML+=`<div class="ai-msg user">${q}</div>`;
+  msgDiv.innerHTML+=`<div class="ai-msg loading" id="ai-loading">Thinking...</div>`;
+  msgDiv.scrollTop=msgDiv.scrollHeight;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        system:`You are a friendly, expert UK primary school curriculum assistant for Schoola (schoola.uk). 
+You help parents and pupils aged 5-11 understand the UK National Curriculum for Key Stage 1 (Years 1-2) and Key Stage 2 (Years 3-6).
+Always use British English (maths not math, colour not color, Year 1 not Grade 1).
+Keep answers concise, warm, and jargon-free. 
+When recommending resources always mention: BBC Bitesize (bbc.co.uk/bitesize), BBC Teach (bbc.co.uk/teach), Oak National Academy (thenational.academy), Twinkl (twinkl.co.uk), White Rose Maths (for maths topics).
+Format responses clearly with short paragraphs. Use bullet points sparingly.`,
+        messages:globalMsgs
+      })
+    });
+    const data=await res.json();
+    const reply=data.content&&data.content[0]&&data.content[0].text?data.content[0].text:'Sorry, I could not get a response. Please try again.';
+    globalMsgs.push({role:'assistant',content:reply});
+    document.getElementById('ai-loading').remove();
+    msgDiv.innerHTML+=`<div class="ai-msg assistant">${reply.replace(/\n/g,'<br>')}</div>`;
+  }catch(e){
+    document.getElementById('ai-loading').remove();
+    msgDiv.innerHTML+=`<div class="ai-msg assistant">Sorry, the AI tutor is not available right now. Please try again shortly.</div>`;
+  }
+  btn.disabled=false;
+  msgDiv.scrollTop=msgDiv.scrollHeight;
+}
+
+// Topic page AI
+let topicMsgs=[];
+
+async function sendTopicAI(topicName,subjectId,ks){
+  const input=document.getElementById('topic-ai-input');
+  const q=input.value.trim();
+  if(!q)return;
+  const btn=document.getElementById('topic-ai-btn');
+  const msgDiv=document.getElementById('topic-ai-messages');
+  input.value='';
+  btn.disabled=true;
+  topicMsgs.push({role:'user',content:q});
+  msgDiv.innerHTML+=`<div class="ai-msg user">${q}</div>`;
+  msgDiv.innerHTML+=`<div class="ai-msg loading" id="topic-ai-loading">Thinking...</div>`;
+  msgDiv.scrollTop=msgDiv.scrollHeight;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:800,
+        system:`You are a helpful UK primary school curriculum tutor on Schoola (schoola.uk). 
+The user is asking about the topic: "${topicName}" in ${subjectId} at ${ks==='ks1'?'Key Stage 1':'Key Stage 2'}.
+Focus specifically on this topic. Use British English. Keep answers friendly, clear, and suitable for parents and children aged 5-11.
+Suggest specific free UK resources: BBC Bitesize, BBC Teach, Oak National Academy, Twinkl, White Rose Maths where relevant.`,
+        messages:topicMsgs
+      })
+    });
+    const data=await res.json();
+    const reply=data.content&&data.content[0]&&data.content[0].text?data.content[0].text:'Sorry, I could not get a response.';
+    topicMsgs.push({role:'assistant',content:reply});
+    document.getElementById('topic-ai-loading').remove();
+    msgDiv.innerHTML+=`<div class="ai-msg assistant">${reply.replace(/\n/g,'<br>')}</div>`;
+  }catch(e){
+    document.getElementById('topic-ai-loading').remove();
+    msgDiv.innerHTML+=`<div class="ai-msg assistant">Sorry, the AI tutor is unavailable right now.</div>`;
+  }
+  btn.disabled=false;
+  msgDiv.scrollTop=msgDiv.scrollHeight;
+}
+
+function showTopic(ks,subjectId,year,topic){
+  const s=gS(subjectId);
+  topicMsgs=[];
+  const ksLabel=ks==='ks1'?'Key Stage 1':'Key Stage 2';
+  const ksColor=ks==='ks1'?'#FFF0EE':'#EEF2FF';
+  const ksText=ks==='ks1'?'#b83922':'#1e3a8a';
+  const tips=TIPS[subjectId]||TIPS.default;
+  const watchUrl=WATCH_URLS[subjectId]||'https://www.bbc.co.uk/teach';
+  const printUrl=PRINT_URLS[subjectId]||'https://www.twinkl.co.uk';
+  const quizUrl=QUIZ_URLS[subjectId]||'https://www.bbc.co.uk/bitesize';
+  const oakUrl=(OAK_URLS[subjectId]||OAK_URLS.default)[ks];
+  const wrUrl=subjectId==='Maths'?'https://whiteroseeducation.com/resources':null;
+
+  document.getElementById('topic-content').innerHTML=`
+    <button class="back-btn" onclick="showPage('home')">← Back to curriculum</button>
+    <div class="breadcrumb">
+      <a href="#" onclick="showPage('home');return false">Home</a> › 
+      <a href="#" onclick="showPage('home');switchKS('${ks}');return false">${ksLabel}</a> › 
+      <a href="#" onclick="showPage('home');scrollToSubject('${subjectId}');return false">${s.label}</a> › 
+      <span>${year}</span> › <span style="color:var(--text)">${topic}</span>
+    </div>
+    <div class="topic-badges">
+      <span class="badge" style="background:${ksColor};color:${ksText}">${ksLabel}</span>
+      <span class="badge" style="background:var(--bg3);color:var(--text2)">${year}</span>
+      <span class="badge" style="background:${s.bg};color:${s.color}">${s.emoji} ${s.label}</span>
+    </div>
+    <h1 class="topic-h1">${topic}</h1>
+    <div class="topic-source">Source: <a href="https://www.gov.uk/national-curriculum" target="_blank" rel="noopener">DfE National Curriculum — ${s.label}, ${ksLabel}</a></div>
+
+    <div class="info-box" style="margin-top:1.25rem">
+      <h3>📋 What pupils learn</h3>
+      <p>This topic covers the key concepts and skills for <strong>${topic}</strong> as set out in the statutory National Curriculum programme of study for ${s.label} at ${ksLabel}. Pupils develop both knowledge and practical application through a range of activities aligned to the attainment targets below.</p>
+    </div>
+
+    <div class="info-box">
+      <h3>✅ National Curriculum objectives</h3>
+      <ul class="obj-list">
+        <li>Develop secure understanding of the core concepts within this topic</li>
+        <li>Apply skills through practical activities, discussion, and investigation</li>
+        <li>Make connections to prior learning and broader subject knowledge</li>
+        <li>Demonstrate progress against year-group attainment targets</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h3>🎬 Video lessons — real links</h3>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="resource-type">BBC Teach</div>
+          <div class="resource-title">${s.label} — BBC Teach Primary</div>
+          <div class="resource-desc">Curriculum-aligned video lessons from BBC Teach, free for all UK schools.</div>
+          <a class="action-btn watch" href="${watchUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex">▶ Watch on BBC Teach →</a>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">Oak National Academy</div>
+          <div class="resource-title">${s.label} — Oak National ${ksLabel}</div>
+          <div class="resource-desc">Free lessons with slides, videos, and pupil activities from Oak National Academy.</div>
+          <a class="action-btn watch" href="${oakUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex">▶ View on Oak →</a>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">BBC Bitesize</div>
+          <div class="resource-title">Bitesize: ${s.label} ${ksLabel}</div>
+          <div class="resource-desc">Short explainer videos with quizzes and interactive follow-up activities.</div>
+          <a class="action-btn watch" href="${quizUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex">▶ Watch on Bitesize →</a>
+        </div>
+        ${wrUrl?`<div class="resource-card"><div class="resource-type">White Rose Maths</div><div class="resource-title">White Rose Maths Resources</div><div class="resource-desc">Free video lessons and schemes of work from the UK's most-used maths curriculum.</div><a class="action-btn watch" href="${wrUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex">▶ View White Rose →</a></div>`:''}
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h3>🖨️ Free printable resources</h3>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="resource-type">Twinkl</div>
+          <div class="resource-title">${topic} — Twinkl Worksheets</div>
+          <div class="resource-desc">Free printable worksheets aligned to the National Curriculum. Thousands of resources.</div>
+          <a class="action-btn print" href="${printUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex">🖨 View on Twinkl →</a>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">BBC Bitesize</div>
+          <div class="resource-title">Bitesize Activity Sheets</div>
+          <div class="resource-desc">Downloadable activity sheets and revision guides from BBC Bitesize.</div>
+          <a class="action-btn print" href="${quizUrl}" target="_blank" rel="noopener noreferrer" style="display:inline-flex">🖨 Download →</a>
+        </div>
+        <div class="resource-card">
+          <div class="resource-type">Primary Resources</div>
+          <div class="resource-title">Primary Resources: ${s.label}</div>
+          <div class="resource-desc">Free teacher-made resources for UK primary classrooms.</div>
+          <a class="action-btn print" href="http://www.primaryresources.co.uk" target="_blank" rel="noopener noreferrer" style="display:inline-flex">🖨 View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h3>❓ Interactive quiz</h3>
+      <p style="font-size:.86rem;color:var(--text2);margin-bottom:.75rem">Test your knowledge with an interactive quiz on BBC Bitesize — the UK's most trusted free revision site.</p>
+      <a class="quiz-cta" href="${quizUrl}" target="_blank" rel="noopener noreferrer">Take the quiz on BBC Bitesize →</a>
+    </div>
+
+    <div class="ai-section">
+      <h3>✦ Ask the AI Tutor about this topic <span class="ai-badge">Powered by Claude</span></h3>
+      <p style="font-size:.85rem;color:#5b21b6;margin-bottom:.5rem">Ask anything about <strong>${topic}</strong> — explanations, examples, practice ideas, or how to help your child at home.</p>
+      <div class="ai-suggestions">
+        <button class="ai-sug" onclick="topicSuggest(this,'${subjectId}','${ks}','${topic.replace(/'/g,"\\'")}')">Explain this in simple terms</button>
+        <button class="ai-sug" onclick="topicSuggest(this,'${subjectId}','${ks}','${topic.replace(/'/g,"\\'")}')">Give me 3 practice activities</button>
+        <button class="ai-sug" onclick="topicSuggest(this,'${subjectId}','${ks}','${topic.replace(/'/g,"\\'")}')">How can I help my child at home?</button>
+        <button class="ai-sug" onclick="topicSuggest(this,'${subjectId}','${ks}','${topic.replace(/'/g,"\\'")}')">What comes next after this topic?</button>
+      </div>
+      <div class="ai-input-row">
+        <input class="ai-input" id="topic-ai-input" placeholder="Ask about ${topic}..." onkeydown="if(event.key==='Enter')sendTopicAI('${topic.replace(/'/g,"\\'")}','${subjectId}','${ks}')">
+        <button class="ai-send" id="topic-ai-btn" onclick="sendTopicAI('${topic.replace(/'/g,"\\'")}','${subjectId}','${ks}')">Ask →</button>
+      </div>
+      <div class="ai-messages" id="topic-ai-messages"></div>
+    </div>
+
+    <div class="info-box">
+      <h3>👨‍👩‍👧 Teaching tips for parents</h3>
+      ${tips.map((tip,i)=>`<div class="accordion-item"><div class="accordion-head" onclick="toggleAcc(this)">Tip ${i+1} <span>＋</span></div><div class="accordion-body">${tip}</div></div>`).join('')}
+    </div>
+
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showPage('home')">← Back to curriculum table</button>
+      <button class="nav-btn" onclick="showPage('home');switchKS('${ks}')">📋 Browse all ${ksLabel} topics</button>
+    </div>
+  `;
+  showPage('topic');
+  window.scrollTo(0,0);
+}
+
+function topicSuggest(btn,subjectId,ks,topic){
+  document.getElementById('topic-ai-input').value=btn.textContent;
+  sendTopicAI(topic,subjectId,ks);
+}
+
+function toggleAcc(head){
+  const body=head.nextElementSibling;
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  head.querySelector('span').textContent=open?'＋':'－';
+}
+
+buildSubjects();
+buildVideos();
+buildRows(KS1,'ks1-tbody','ks1');
+buildRows(KS2,'ks2-tbody','ks2');
+</script>
