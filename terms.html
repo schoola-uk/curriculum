@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer & Terms of Use — Schoola</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2b6cb0;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --bg-light: #f7fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --accent-amber: #d69e2e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Top Announcement Banner */
+        .top-banner {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .top-banner a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* Navigation Bar */
+        .nav-container {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Main Content Wrapper */
+        .page-wrapper {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        .breadcrumbs a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Document Card */
+        .legal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .tagline {
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        /* Highlight box matching Schoola interface callouts */
+        .callout-box {
+            background-color: #f7fafc;
+            border-left: 4px solid var(--primary-light);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+            font-size: 1rem;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+            padding: 50px 20px;
+        }
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .legal-card {
+                padding: 30px 20px;
+            }
+        }
+        .footer-brand h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0 0 15px 0;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .footer-links h5 {
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement Banner -->
+    <div class="top-banner">
+        NEW Free weekly curriculum newsletter for parents → <a href="#">Get it free</a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-container">
+        <div class="nav-content">
+            <a href="#" class="logo">Schoola</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">KS1</a>
+                <a href="#">KS2</a>
+                <a href="#">About</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Body Container -->
+    <div class="page-wrapper">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="#">Home</a> › Disclaimer & Terms of Use
+        </div>
+
+        <!-- Content Card -->
+        <div class="legal-card">
+            <div class="tagline">Statutory National Curriculum Signposting</div>
+            <h1>Disclaimer and Terms of Use</h1>
+            
+            <h2>📋 Third-Party Content Disclaimer</h2>
+            
+            <div class="callout-box">
+                <p><strong>Please note:</strong> Schoola is an independent educational signposting service. Schoola does not create, own, control, host, publish, edit, or maintain the third-party educational resources accessible through links on this website.</p>
+            </div>
+            
+            <p>All third-party content, including but not limited to videos, worksheets, articles, quizzes, lesson materials, trademarks, logos, images, and educational resources, remains the property of its respective owners and is subject to the terms and conditions of those owners.</p>
+            
+            <p>Schoola provides links solely for informational and educational convenience. The inclusion of any resource, website, organisation, or service does not constitute endorsement, approval, sponsorship, recommendation, or affiliation unless expressly stated.</p>
+            
+            <p>Schoola makes no representations or warranties regarding the accuracy, completeness, legality, availability, suitability, accessibility, quality, safety, or educational effectiveness of any third-party content.</p>
+            
+            <p>Users access external websites and resources entirely at their own risk. Schoola accepts no responsibility and shall not be liable for any loss, damage, injury, inconvenience, claim, liability, cost, or expense arising from or connected with the use of, reliance upon, or inability to access any third-party website, content, product, service, or information.</p>
+            
+            <p>Third-party websites may change, remove, relocate, restrict, or discontinue content without notice. Schoola has no control over such changes and accepts no responsibility for them.</p>
+            
+            <p>If you are a copyright owner, trademark owner, or authorised representative and believe that any linked resource should be removed or amended, please contact Schoola. We will review legitimate requests and take appropriate action where necessary.</p>
+            
+            <h2>⚖️ Limitation of Liability</h2>
+            
+            <p>To the fullest extent permitted by applicable law, Schoola, its owners, operators, contributors, affiliates, and service providers exclude all liability arising out of or in connection with the use of this website and any linked third-party content.</p>
+            
+            <p>Schoola shall not be liable for any direct, indirect, incidental, consequential, special, punitive, or economic loss, including loss of data, loss of educational opportunity, loss of profits, loss of business, loss of goodwill, or any other loss arising from reliance upon information, resources, links, or services accessed through this website.</p>
+            
+            <p>Nothing in these Terms excludes or limits liability where such exclusion or limitation is prohibited by applicable law.</p>
+        </div>
+    </div>
+
+    <!-- Interface Aligned Footer -->
+    <footer>
+        <div class="footer-content">
