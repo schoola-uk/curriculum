@@ -284,96 +284,107 @@ td{padding:9px 12px;vertical-align:middle}
 <div id="page-home">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-dots">
-      <div class="hero-blob hero-blob-1"></div>
-      <div class="hero-blob hero-blob-2"></div>
-      <div class="hero-blob hero-blob-3"></div>
-    </div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-tag">
+<!-- HERO -->
+  <section class="hero" style="background: linear-gradient(135deg, #2575FC 0%, #1D5BF2 55%, #0284C7 100%); color: #fff; min-height: auto; padding: 3rem 2rem 3.5rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 2.5rem; align-items: center;">
+      <div>
+        <div class="hero-tag" style="background: rgba(255,255,255,0.16); color: #E0F2FE; border-color: rgba(255,255,255,0.3); box-shadow: none;">
           <svg width="16" height="11" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/></svg>
           Free · No account needed · UK National Curriculum
         </div>
-        <h1>Your child's complete<br><span class="grad">UK primary curriculum</span><br>in one place</h1>
-        <p class="hero-sub">Every subject, every topic for Years 1–6 — mapped to the National Curriculum with free videos, printables, and quizzes.</p>
-        <div class="hero-btns">
-          <button class="btn btn-primary" onclick="scrollToKS('ks1')">📗 Key Stage 1 · Years 1–2</button>
-          <button class="btn btn-ks2" onclick="scrollToKS('ks2')">📘 Key Stage 2 · Years 3–6</button>
+        <h1 style="color: #fff; font-size: clamp(2.1rem, 4.2vw, 3.1rem); line-height: 1.08; margin-bottom: 1rem;">
+          Your child's complete<br>
+          <span style="color: #FCD34D; -webkit-text-fill-color: #FCD34D;">UK primary curriculum</span><br>
+          <span style="color: #6EE7B7; -webkit-text-fill-color: #6EE7B7;">in one place</span>
+        </h1>
+        <p class="hero-sub" style="color: #E0F2FE; margin-bottom: 1.5rem;">
+          Every subject, every topic for Years 1–6 — mapped to the National Curriculum with free videos, printables, and quizzes.
+        </p>
+        <div class="hero-btns" style="margin-bottom: 1.75rem;">
+          <button class="btn" style="background: #34D399; color: #0F172A; border: 2px solid #047857; border-bottom-width: 4px;" onclick="scrollToKS('ks1')">📗 Key Stage 1 · Years 1–2</button>
+          <button class="btn" style="background: #7DD3FC; color: #0F172A; border: 2px solid #0369A1; border-bottom-width: 4px;" onclick="scrollToKS('ks2')">📘 Key Stage 2 · Years 3–6</button>
+          <a class="btn" style="background: linear-gradient(90deg,#F97316,#F59E0B); color: #fff; border: 2px solid #C2410C; border-bottom-width: 4px;" href="https://schoola-uk.github.io/schoola-app/">✨ Open Interactive App →</a>
         </div>
         <div class="hero-stats">
-          <div class="hero-stat"><span class="hero-stat-num">200+</span><span class="hero-stat-label">Curriculum topics</span></div>
-          <div class="hero-stat"><span class="hero-stat-num">12</span><span class="hero-stat-label">Subjects covered</span></div>
-          <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Free, always</span></div>
+          <div class="hero-stat"><span class="hero-stat-num" style="background:none;-webkit-text-fill-color:#FCD34D;color:#FCD34D;">200+</span><span class="hero-stat-label" style="color:#BAE6FD;">Curriculum topics</span></div>
+          <div class="hero-stat"><span class="hero-stat-num" style="background:none;-webkit-text-fill-color:#6EE7B7;color:#6EE7B7;">12</span><span class="hero-stat-label" style="color:#BAE6FD;">Subjects covered</span></div>
+          <div class="hero-stat"><span class="hero-stat-num" style="background:none;-webkit-text-fill-color:#FFFFFF;color:#FFFFFF;">100%</span><span class="hero-stat-label" style="color:#BAE6FD;">Free, always</span></div>
         </div>
       </div>
-      <div class="hero-art">
-        <div class="hero-card hero-card-1">
-          <div class="hero-card-label">Today's topic</div>
-          <div class="hero-card-val">📚 English</div>
-          <div class="hero-card-sub">Phonics · Phase 5</div>
-        </div>
-        <div class="hero-card hero-card-3">
-          <div class="hero-card-label">Progress</div>
-          <div class="hero-card-val">🔢 Maths Y3</div>
-          <div class="hero-card-sub">Times tables · 3×</div>
-        </div>
-        <div class="hero-card hero-card-2">
-          <div class="hero-card-label">Free resource</div>
-          <div class="hero-card-val">🔬 Science</div>
-          <div class="hero-card-sub">BBC Teach video ready</div>
-        </div>
-        <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" width="320" height="240" style="opacity:0">
-          <!-- Books stack -->
-          <rect x="20" y="160" width="80" height="12" rx="4" fill="#E8604C" opacity="0.9"/>
-          <rect x="18" y="149" width="84" height="12" rx="4" fill="#2563EB" opacity="0.9"/>
-          <rect x="22" y="138" width="76" height="12" rx="4" fill="#059669" opacity="0.9"/>
-          <!-- Kid 1 reading -->
-          <circle cx="160" cy="70" r="28" fill="#FDDCB5"/>
-          <rect x="133" y="98" width="54" height="62" rx="10" fill="#DB2777" opacity="0.85"/>
-          <rect x="148" y="95" width="24" height="8" rx="4" fill="#7C3AED" opacity="0.6"/>
-          <!-- Book in hands -->
-          <rect x="140" y="122" width="40" height="30" rx="5" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
-          <line x1="160" y1="122" x2="160" y2="152" stroke="#ddd" stroke-width="1.5"/>
-          <rect x="143" y="126" width="14" height="2" rx="1" fill="#aaa"/>
-          <rect x="143" y="130" width="14" height="2" rx="1" fill="#aaa"/>
-          <rect x="163" y="126" width="14" height="2" rx="1" fill="#aaa"/>
-          <!-- Hair kid 1 -->
-          <ellipse cx="160" cy="56" rx="18" ry="10" fill="#2d1a0e"/>
-          <!-- Kid 2 with pencil -->
-          <circle cx="255" cy="80" r="24" fill="#F0C5A0"/>
-          <rect x="232" y="104" width="46" height="55" rx="9" fill="#2563EB" opacity="0.85"/>
-          <!-- Pencil -->
-          <rect x="275" y="60" width="6" height="30" rx="2" fill="#CA8A04" transform="rotate(30 278 75)"/>
-          <polygon points="275,60 281,60 278,52" fill="#F0C5A0" transform="rotate(30 278 75)"/>
-          <!-- Hair kid 2 -->
-          <path d="M231,68 Q255,48 279,68" stroke="#1a0a00" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <!-- Atom/science -->
-          <circle cx="60" cy="60" r="20" fill="none" stroke="#059669" stroke-width="2" opacity="0.4"/>
-          <ellipse cx="60" cy="60" rx="20" ry="9" fill="none" stroke="#059669" stroke-width="2" opacity="0.4" transform="rotate(60 60 60)"/>
-          <ellipse cx="60" cy="60" rx="20" ry="9" fill="none" stroke="#059669" stroke-width="2" opacity="0.4" transform="rotate(120 60 60)"/>
-          <circle cx="60" cy="60" r="4" fill="#059669" opacity="0.7"/>
-          <!-- Math symbols -->
-          <text x="270" y="170" font-size="28" font-family="Nunito" font-weight="900" fill="#2563EB" opacity="0.25">∑</text>
-          <text x="18" y="130" font-size="22" font-family="Nunito" font-weight="900" fill="#DB2777" opacity="0.25">♪</text>
-          <text x="285" y="120" font-size="18" font-family="Nunito" font-weight="900" fill="#D97706" opacity="0.25">π</text>
-          <!-- Stars -->
-          <text x="90" y="40" font-size="16" fill="#CA8A04" opacity="0.5">★</text>
-          <text x="195" y="30" font-size="12" fill="#E8604C" opacity="0.5">★</text>
-          <text x="240" y="190" font-size="14" fill="#7C3AED" opacity="0.4">★</text>
-          <!-- Ground line -->
-          <rect x="10" y="190" width="300" height="4" rx="2" fill="#e5e4dc"/>
-          <!-- Grass tufts -->
-          <path d="M20,190 Q25,178 30,190" stroke="#65A30D" stroke-width="2" fill="none"/>
-          <path d="M40,190 Q45,182 50,190" stroke="#65A30D" stroke-width="2" fill="none"/>
-          <path d="M220,190 Q225,180 230,190" stroke="#65A30D" stroke-width="2" fill="none"/>
-          <path d="M260,190 Q265,184 270,190" stroke="#65A30D" stroke-width="2" fill="none"/>
+
+      <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+        <svg viewBox="0 0 560 410" style="width: 100%; max-width: 520px; height: auto; filter: drop-shadow(0 18px 36px rgba(15,23,42,0.28));" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schoola animal characters exploring books, music and sport">
+          <ellipse cx="286" cy="364" rx="215" ry="22" fill="#0F172A" opacity="0.22"/>
+          <g transform="translate(115, 76)">
+            <path d="M12 210 C-36 206 -52 162 -22 138 C-4 154 6 184 24 198 Z" fill="#EA580C"/>
+            <path d="M-22 138 C-34 148 -38 164 -26 174 C-14 166 -12 150 -22 138 Z" fill="#FFF7ED"/>
+            <path d="M28 148 C28 124 88 124 88 148 L96 226 H20 Z" fill="#1D4ED8"/>
+            <rect x="34" y="224" width="16" height="44" rx="8" fill="#EA580C"/>
+            <rect x="66" y="224" width="16" height="44" rx="8" fill="#EA580C"/>
+            <ellipse cx="42" cy="272" rx="15" ry="9" fill="#FFFFFF"/>
+            <ellipse cx="74" cy="272" rx="15" ry="9" fill="#FFFFFF"/>
+            <polygon points="18,46 8,2 50,24" fill="#EA580C"/>
+            <polygon points="98,46 108,2 66,24" fill="#EA580C"/>
+            <ellipse cx="58" cy="74" rx="50" ry="44" fill="#FB923C"/>
+            <path d="M10 78 Q34 68 58 98 Q82 68 106 78 Q94 114 58 118 Q22 114 10 78 Z" fill="#FFF7ED"/>
+            <circle cx="38" cy="68" r="16" fill="#FFFFFF" stroke="#0F172A" stroke-width="4"/>
+            <circle cx="78" cy="68" r="16" fill="#FFFFFF" stroke="#0F172A" stroke-width="4"/>
+            <line x1="54" y1="68" x2="62" y2="68" stroke="#0F172A" stroke-width="4"/>
+            <circle cx="40" cy="68" r="6" fill="#0F172A"/>
+            <circle cx="76" cy="68" r="6" fill="#0F172A"/>
+            <ellipse cx="58" cy="88" rx="7" ry="5" fill="#0F172A"/>
+            <path d="M48 98 Q58 106 68 98" stroke="#0F172A" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(88, 286)">
+            <rect x="0" y="42" width="84" height="18" rx="5" fill="#F43F5E"/>
+            <rect x="6" y="24" width="76" height="18" rx="5" fill="#F59E0B"/>
+            <rect x="2" y="6" width="80" height="18" rx="5" fill="#10B981"/>
+          </g>
+          <g transform="translate(155, 225) rotate(-8)">
+            <path d="M0 44 Q32 32 60 44 L60 6 Q32 -6 0 6 Z" fill="#FFFFFF" stroke="#0284C7" stroke-width="2.5"/>
+            <path d="M60 44 Q92 32 120 44 L120 6 Q92 -6 60 6 Z" fill="#EFF6FF" stroke="#0284C7" stroke-width="2.5"/>
+            <circle cx="88" cy="20" r="7" fill="#FBBF24"/>
+          </g>
+          <g transform="translate(242, 134)">
+            <polygon points="44,-6 56,-22 66,-4" fill="#38BDF8"/>
+            <polygon points="68,-2 82,-18 90,4" fill="#38BDF8"/>
+            <ellipse cx="64" cy="144" rx="44" ry="52" fill="#22C55E"/>
+            <ellipse cx="64" cy="152" rx="28" ry="38" fill="#BBF7D0"/>
+            <ellipse cx="64" cy="48" rx="44" ry="40" fill="#4ADE80"/>
+            <circle cx="48" cy="40" r="10" fill="#FFFFFF"/>
+            <circle cx="80" cy="40" r="10" fill="#FFFFFF"/>
+            <circle cx="50" cy="40" r="5" fill="#0F172A"/>
+            <circle cx="82" cy="40" r="5" fill="#0F172A"/>
+            <path d="M36 60 Q64 84 92 60 Z" fill="#7F1D1D"/>
+            <ellipse cx="46" cy="206" rx="18" ry="11" fill="#15803D"/>
+            <ellipse cx="82" cy="206" rx="18" ry="11" fill="#15803D"/>
+            <g transform="translate(24, 118) rotate(-18)">
+              <rect x="52" y="12" width="52" height="10" rx="4" fill="#92400E"/>
+              <ellipse cx="32" cy="18" rx="24" ry="19" fill="#F59E0B" stroke="#92400E" stroke-width="3"/>
+              <circle cx="36" cy="18" r="7" fill="#78350F"/>
+            </g>
+          </g>
+          <g transform="translate(366, 94)">
+            <path d="M98 192 C142 184 152 132 126 112" stroke="#1E1B4B" stroke-width="14" stroke-linecap="round"/>
+            <rect x="26" y="124" width="76" height="62" rx="20" fill="#FFFFFF"/>
+            <rect x="24" y="172" width="80" height="32" rx="10" fill="#F97316"/>
+            <rect x="34" y="202" width="16" height="54" rx="8" fill="#1E1B4B"/>
+            <rect x="76" y="202" width="16" height="40" rx="8" fill="#1E1B4B"/>
+            <polygon points="22,42 14,2 52,24" fill="#1E1B4B"/>
+            <polygon points="106,42 114,2 76,24" fill="#1E1B4B"/>
+            <ellipse cx="64" cy="68" rx="48" ry="42" fill="#4338CA"/>
+            <circle cx="46" cy="60" r="9" fill="#FFFFFF"/>
+            <circle cx="82" cy="60" r="9" fill="#FFFFFF"/>
+            <circle cx="46" cy="60" r="4.5" fill="#0F172A"/>
+            <circle cx="82" cy="60" r="4.5" fill="#0F172A"/>
+            <path d="M42 82 Q64 98 86 82 Z" fill="#FFFFFF"/>
+            <circle cx="88" cy="248" r="24" fill="#FFFFFF" stroke="#0F172A" stroke-width="2.5"/>
+            <polygon points="88,238 97,245 94,256 82,256 79,245" fill="#0F172A"/>
+          </g>
         </svg>
       </div>
     </div>
   </section>
-
   <!-- UPCOMING EVENTS -->
   <section class="events-section">
     <div class="events-inner">
